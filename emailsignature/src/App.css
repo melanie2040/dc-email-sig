@@ -35,4 +35,14 @@
   to {
     transform: rotate(360deg);
   }
+  
+}
+
+.styled-hr {
+  border: none;
+  height: 2px;
+  background-color: #FF3300; /* Change color here */
+  width:400px;
+  margin: 0; /* Remove default margin */
+  margin-left: 0; /* Align to the left */
 }

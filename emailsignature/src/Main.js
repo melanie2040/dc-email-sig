@@ -11,6 +11,7 @@ import youtube_24 from './Assets/youtube_24.png';
 import address from './Assets/address.png';
 import phone from './Assets/phone.png';
 import weblink from './Assets/weblink.png';
+import line from './Assets/lineneed.png';
 
 const Divider = () => (
     <div style={{
@@ -54,6 +55,20 @@ const EmailInput = () => {
         }
     };
 
+    const handleNumberChange = (e) => {
+        var value = e.target.value;
+        if (/^\d{8}$/.test(value)) {
+            // Separate the number into two groups of four
+            var formatted = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+
+            // Display the formatted number
+            value = formatted;
+        } else {
+            value = value;
+        }
+        setNumber(value);
+    };
+
     return (
         <div>
             <div>
@@ -72,7 +87,7 @@ const EmailInput = () => {
                     <input
                         type="text"
                         value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        onChange={(e) => setLastName(e.target.value.toUpperCase())}
                     />
                 </label>
             </div>
@@ -114,15 +129,39 @@ const EmailInput = () => {
                     <input
                         type="number"
                         value={number}
-                        onChange={(e) => setNumber(e.target.value)}
+                        onChange={handleNumberChange}
                     />
                 </label>
             </div>
             <div style={{ textAlign: 'left', marginLeft: '20px' }}>
-                <p style={{ margin: '10px 0', fontWeight: 'bold', fontSize: '8.5pt', fontFamily: 'Arial, sans-serif' }}>{firstName} {lastName} {secondName}</p>
-                <p style={{ margin: '10px 0', fontSize: '8.5pt', fontFamily: 'Arial, sans-serif' }}>{role}</p>
-                <p style={{ margin: '10px 0', fontSize: '8.5pt', fontFamily: 'Arial, sans-serif' }}>{company}</p>
-                <Divider />
+
+                <table style={{ width: '30%', borderCollapse: 'collapse' }}>
+                    <tbody>
+                        <tr>
+                            <td style={{ padding: '0', textAlign: 'left' }} >
+                                <div style={{ fontWeight: 'bold', fontSize: '8.5pt', fontFamily: 'Arial, sans-serif', marginTop: '10px' }}>{firstName} {lastName} {secondName}</div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td style={{ padding: '0', textAlign: 'left' }} >
+                                <div style={{ fontSize: '8.5pt', fontFamily: 'Arial, sans-serif', marginTop: '15px' }}>{role}</div>
+                            </td>
+                        </tr>
+
+                        <tr >
+                            <td style={{ padding: '0', textAlign: 'left' }}>
+                                <div style={{ fontSize: '8.5pt', fontFamily: 'Arial, sans-serif', marginTop: '15px' }}>{company}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colSpan="2" style={{ padding: '0', textAlign: 'start' }}> {/* Merge columns */}
+                                <img src={line} alt="Line" style={{ width: '400px', height: '1px' }} />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
 
                 <table style={{ width: '50%', borderCollapse: 'collapse' }}>
                     <tbody>
@@ -143,7 +182,7 @@ const EmailInput = () => {
                             </td>
                             <td style={{ padding: '0', textAlign: 'left', margin: '0' }}>
                                 <a
-                                    href="https://www.dconstruct.co" // Add the URL here
+                                    href="https://www.dconstruct.co/" // Add the URL here
                                     style={{
                                         textAlign: 'left',
                                         margin: '10px 0',
@@ -170,32 +209,46 @@ const EmailInput = () => {
 
                             </td>
                         </tr>
+                        <tr>
+                            <td colSpan="2" style={{ padding: '0', textAlign: 'left' }}> {/* Merge columns */}
+                                <img src={line} alt="Line" style={{ width: '400px', height: '1px' }} />
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-
-
-                <Divider />
-
-                <table style={{ borderCollapse: 'collapse' }}>
+                <table style={{ marginTop: '10px', borderCollapse: 'collapse' }}>
                     <tbody>
+
                         <tr>
-                            <td style={{ padding: '0 5px', textAlign: 'left' }} >
-                                <img src={image} alt="Selected" style={{ width: 'auto', height: 'auto' }} />
+                            <td style={{ padding: '0 30px 0 0', textAlign: 'left' }} >
+                                <a href="https://www.dconstruct.co/" target="_blank" rel="noopener noreferrer">
+                                    <img src={image} alt="Selected" style={{ width: 'auto', height: 'auto' }} />
+                                </a>
                             </td>
-                            <td style={{ padding: '0 5px', textAlign: 'left' }} >
-                                <img src={facebook_24} alt="Facebook" style={{ width: '24px', height: '24px' }} />
+                            <td style={{ padding: '0 10px', textAlign: 'left' }} >
+                                <a href="https://www.facebook.com/p/dConstruct-100067460462997/" target="_blank" rel="noopener noreferrer">
+                                    <img src={facebook_24} alt="Facebook" style={{ width: '24px', height: '24px' }} />
+                                </a>
                             </td>
-                            <td style={{ padding: '0 5px', textAlign: 'left' }} >
-                                <img src={instagram_24} alt="Instagram" style={{ width: '24px', height: '24px' }} />
+                            <td style={{ padding: '0 10px', textAlign: 'left' }} >
+                                <a href="https://www.instagram.com/dconstructt/?igsh=M3o4NHRyd2FuaG42&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">
+                                    <img src={instagram_24} alt="Instagram" style={{ width: '24px', height: '24px' }} />
+                                </a>
                             </td>
-                            <td style={{ padding: '0 5px', textAlign: 'left' }} >
-                                <img src={linkedin_24} alt="LinkedIn" style={{ width: '24px', height: '24px' }} />
+                            <td style={{ padding: '0 10px', textAlign: 'left' }} >
+                                <a href="https://www.linkedin.com/company/dconstruct/" target="_blank" rel="noopener noreferrer">
+                                    <img src={linkedin_24} alt="LinkedIn" style={{ width: '24px', height: '24px' }} />
+                                </a>
                             </td>
-                            <td style={{ padding: '0 5px', textAlign: 'left' }} >
-                                <img src={twitter_24} alt="Twitter" style={{ width: '24px', height: '24px' }} />
+                            <td style={{ padding: '0 10px', textAlign: 'left' }} >
+                                <a href="https://twitter.com/dConstructTech" target="_blank" rel="noopener noreferrer">
+                                    <img src={twitter_24} alt="Twitter" style={{ width: '24px', height: '24px' }} />
+                                </a>
                             </td>
-                            <td style={{ padding: '0 5px', textAlign: 'left' }} >
-                                <img src={youtube_24} alt="YouTube" style={{ width: '24px', height: '24px' }} />
+                            <td style={{ padding: '0 10px', textAlign: 'left' }} >
+                                <a href="https://www.youtube.com/@dConstructTech" target="_blank" rel="noopener noreferrer">
+                                    <img src={youtube_24} alt="YouTube" style={{ width: '24px', height: '24px' }} />
+                                </a>
                             </td>
 
                         </tr>
