@@ -135,7 +135,7 @@ const EmailInput = () => {
             </div>
             <div style={{ textAlign: 'left', marginLeft: '20px' }}>
 
-                <table style={{ width: '30%', borderCollapse: 'collapse' }}>
+                <table style={{ borderCollapse: 'collapse' }}>
                     <tbody>
                         <tr>
                             <td style={{ padding: '0', textAlign: 'left' }} >
